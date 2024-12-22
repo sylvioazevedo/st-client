@@ -1,4 +1,4 @@
-from stc.st_client import STClient
+from st_client.stc import STClient
 
 import argparse
 import json

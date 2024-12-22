@@ -1,3 +1,5 @@
+from .etc import settings
+
 import json
 import requests
 import time
@@ -6,8 +8,9 @@ class STClient(object):
     
     def __init__(self) -> None:
         
-        # set endpoint base url
-        self.base_url = 'http://localhost:5000'
+        # set apis endpoints 
+        self.auth_url = settings.HANZO_SERVER
+        self.base_url = settings.ST_SERVER
         
         # set headers
         self.headers = {'Content-Type': 'application/json'}
@@ -27,7 +30,7 @@ class STClient(object):
         login_data = {'username': username, 'password': password}
         
         # send login request
-        response = requests.post(self.base_url + '/login', headers=self.headers, data=json.dumps(login_data))
+        response = requests.post(self.auth_url + '/login', headers=self.headers, data=json.dumps(login_data))
         
         # check response status code
         if response.status_code == 200:
@@ -54,7 +57,7 @@ class STClient(object):
         self.headers['Authorization'] = 'Bearer ' + self.refresh_token
         
         # send refresh request
-        response = requests.post(self.base_url + '/refresh', headers=self.headers)
+        response = requests.post(self.auth_url + '/refresh', headers=self.headers)
         
         # check response status code
         if response.status_code == 200:

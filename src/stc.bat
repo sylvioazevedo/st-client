@@ -1,3 +1,3 @@
 @echo off
 set pythonpath=%pythonpath%;src
-python stc\main.py %*
+python st_client\main.py %*

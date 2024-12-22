@@ -1,0 +1,2 @@
+HANZO_SERVER = 'http://127.0.0.1:35777'	
+ST_SERVER = 'http://127.0.0.1:35779'
